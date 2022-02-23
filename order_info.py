@@ -50,16 +50,6 @@ def orders_info():
                 close_positions_dic['Qty'] = qty
                 close_positions_array.append(close_positions_dic)
 
-                # 一番不利な値をエントリ値にする
-                if settings.side == 1:
-                    # 売建の場合
-                    if variables.orderPrice is None or orderDetail['Price'] < variables.orderPrice:
-                        variables.orderPrice = orderDetail['Price']
-                else:
-                    # 買建の場合
-                    if variables.orderPrice is None or orderDetail['Price'] > variables.orderPrice:
-                        variables.orderPrice = orderDetail['Price']
-
             # 建玉データを保存
             variables.closePositions = close_positions_array
             print(variables.closePositions)
