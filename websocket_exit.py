@@ -16,7 +16,7 @@ class WebsocketExitC:
         # トレーリングストップで使う最高値 or 最安値
         self.peak_value = None
 
-    def on_message(self, message):
+    def on_message(self, ws, message):
         self.print_with_time('--- RECV MSG. --- ')
         content = json.loads(message)
         cur_price = content["CurrentPrice"]
@@ -54,15 +54,15 @@ class WebsocketExitC:
         # イクジット
         send_order_exit.send_order_exit()
 
-    def on_error(self, error):
+    def on_error(self, ws, error):
         if len(error) != 0:
             self.print_with_time('--- ERROR --- ')
             print(error)
 
-    def on_close(self):
+    def on_close(self, ws):
         self.print_with_time('--- DISCONNECTED --- ')
 
-    def on_open(self):
+    def on_open(self, ws):
         self.print_with_time('--- CONNECTED --- ')
 
     def websocket_exit_a(self):

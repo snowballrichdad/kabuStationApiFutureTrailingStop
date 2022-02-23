@@ -15,5 +15,5 @@ qty = 4
 # トレーリングストップの割合を%で指定
 trailing_stop_ratio = 1
 # 指値注文で返済注文をする際の気配値からの値幅(絶対に約定するように余裕を持たせる
-exit_limit_value = 1000
+limit_order_margin = 1000
 settlement_check_interval = 10
